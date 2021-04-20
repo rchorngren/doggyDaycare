@@ -34,15 +34,15 @@ function App() {
   return (
     <div className="App">
             
-      <header className="App-header">     
+      <header className="App-header Dev-tools">     
         <button onClick={logLocalStorage}>What's in Local Storage?</button>
         <button onClick={removeLocalStorage}>Delete local storage</button>
         
-        {content}
+        
         
       </header>
       <main>
-        
+        {content}
       </main>
     </div>
   );
