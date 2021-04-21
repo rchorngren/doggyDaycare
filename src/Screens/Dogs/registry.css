@@ -1,0 +1,34 @@
+.dogEntry {
+  display: flex;
+  background-color: hotpink;
+  margin: 1em;
+  border-radius: 2em;
+}
+
+.dogInfo {
+  display: flex;
+  align-items: center;
+}
+
+.dogInfoText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+}
+
+.dogPresent {
+  margin-left: 1em;
+}
+
+.dogImageSmall {
+  width: 10em;
+  height: 10em;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+}
+
+.dogPresentIndicator {
+  width: 50px;
+  height: 50px;
+  
+}

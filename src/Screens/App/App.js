@@ -14,6 +14,11 @@ function App() {
     console.log('localDogs: ', JSON.parse(localDogs));
   }
 
+  function logClickedDog() {
+    let clickedDog = localStorage.getItem('clickedDog');
+    console.log('clickedDog: ', JSON.parse(clickedDog));
+  }
+
   function removeLocalStorage() {
     localStorage.removeItem('dogs');
   }
@@ -36,6 +41,7 @@ function App() {
             
       <header className="App-header Dev-tools">     
         <button onClick={logLocalStorage}>What's in Local Storage?</button>
+        <button onClick={logClickedDog}>Any clicked dog?</button>
         <button onClick={removeLocalStorage}>Delete local storage</button>
         
         
