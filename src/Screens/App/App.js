@@ -6,9 +6,9 @@ import SelectedDog from '../SelectedDog/SelectedDog';
 import './App.css';
 
 function App() {
-  const LOADING = 'loading', LOADED = 'loaded', CLICKED = 'clicked';
+  const HOME = 'homeScreen', LISTOFDOGS = 'listOfDogs', INDIVIDUALDOG = 'individualDog';
 
-  const [hasData, setHasData] = useState(LOADING);
+  const [showingView, setShowingView] = useState(HOME);
   const [dogData, setDogData] = useState(null);
 
   function logLocalStorage() {
@@ -20,11 +20,11 @@ function App() {
     let clickedDog = JSON.parse(localStorage.getItem('clickedDog'));
     console.log('clickedDog: ', clickedDog);
     setDogData(clickedDog);
-    setHasData(CLICKED);
+    setShowingView(INDIVIDUALDOG);
   }
 
   function navigateBack() {
-    setHasData(LOADED);
+    setShowingView(LISTOFDOGS);
   }
 
   function removeLocalStorage() {
@@ -32,15 +32,15 @@ function App() {
   }
 
   useEffect(() => {
-    GetData(() => { setHasData(LOADED) });
+    GetData(() => { setShowingView(LISTOFDOGS) });
   }, []);
 
   let content = null;
-  switch (hasData) {
-    case LOADED:
+  switch (showingView) {
+    case LISTOFDOGS:
       content = <Registry logClickedDog={logClickedDog} />
       break;
-    case CLICKED:
+    case INDIVIDUALDOG:
       content = <SelectedDog dogData={dogData} navBack={navigateBack} />
       break;
     default:
@@ -54,8 +54,6 @@ function App() {
         <button onClick={logLocalStorage}>What's in Local Storage?</button>
         <button onClick={logClickedDog}>Any clicked dog?</button>
         <button onClick={removeLocalStorage}>Delete local storage</button>
-
-
 
       </header>
       <main>
