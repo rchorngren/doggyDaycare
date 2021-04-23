@@ -1,3 +1,5 @@
+import './selectedDog.css';
+
 const selectedDog = ({ dogData, navBack }) => {
   console.log('SelectedDog dogData: ', dogData);
 
@@ -5,7 +7,7 @@ const selectedDog = ({ dogData, navBack }) => {
     navBack();
   }
 
-  if(!dogData) {
+  if (!dogData) {
     console.log('no data through props - using data from local storage');
     dogData = JSON.parse(localStorage.getItem('clickedDog'));
   }
@@ -14,18 +16,34 @@ const selectedDog = ({ dogData, navBack }) => {
 
     <div onClick={() => { navigateBack() }}>
       {dogData ? (
-        <div>
-          <img src={dogData.img} alt="" />
-          <p>Name: {dogData.name}</p>
-          <p>Age: {dogData.age}</p>
-          <p>Breed: {dogData.breed}</p>
-          <p>Chipnumber: {dogData.chipNumber}</p>
-          <p>Present:  {dogData.present}</p>
-          <p>Sex: {dogData.sex}</p>
-          <p>Owner:</p>
+        <div className="selectedDog">
+          <section className="dogSection">
+            <img src={dogData.img} alt="" />
+            <div className="dawgInfo">
+              <p>Name: {dogData.name}</p>
+              <p>Age: {dogData.age}</p>
+            </div>
+
+            
+
+
+
+          </section>
+
+          <section className="dawgInfoMore">
+              <p>Breed: {dogData.breed}</p>
+              <p>Chipnumber: {dogData.chipNumber}</p>
+              <p>Sex: {dogData.sex}</p>
+              <p>Present:  {dogData.present ? (
+                "Present"
+              ) : (
+                "Not present"
+              )}</p>
+            </section>
+
           <section className="ownerSection">
-            <p>First name: {dogData.owner.name}</p>
-            <p>Last name: {dogData.owner.lastName}</p>
+            <h4>Owner</h4>
+            <p>Name: {dogData.owner.name} {dogData.owner.lastName}</p>
             <p>Phone number: {dogData.owner.phoneNumber}</p>
           </section>
         </div>

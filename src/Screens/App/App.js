@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import GetData from '../../Api/GetData';
-import Registry from '../Dogs/Registry';
+import Registry from '../Registry/Registry';
 import SelectedDog from '../SelectedDog/SelectedDog';
 import './App.css';
 

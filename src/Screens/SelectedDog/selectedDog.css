@@ -1,0 +1,40 @@
+.selectedDog {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+  /* background-color: lawngreen; */
+}
+
+.dogSection {
+  display: flex;
+  /* background-color: lightcoral; */
+  flex-direction: row;
+}
+
+.dogSection > img {
+  border-radius: 2em;
+  height: 50%;
+  width: 50%;
+}
+
+.dawgInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1em;
+  /* background-color: magenta; */
+}
+
+.dawgInfoMore {
+  /* background-color: aqua; */
+  margin: 1em;
+}
+
+.ownerSection :first-child {
+  text-align: center;
+  /* background-color: mediumslateblue; */
+}
+
+.ownerSection > p {
+  margin-left: 1em;
+  /* background-color: lightskyblue; */
+}
