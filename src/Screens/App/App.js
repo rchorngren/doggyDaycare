@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
 import GetData from '../../Api/GetData';
 import Registry from '../Registry/Registry';
@@ -6,10 +7,10 @@ import SelectedDog from '../SelectedDog/SelectedDog';
 import './App.css';
 
 function App() {
-  const HOME = 'homeScreen', LISTOFDOGS = 'listOfDogs', INDIVIDUALDOG = 'individualDog';
-
-  const [showingView, setShowingView] = useState(HOME);
   const [dogData, setDogData] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+
+  
 
   function logLocalStorage() {
     let localDogs = localStorage.getItem('dogs');
@@ -20,32 +21,16 @@ function App() {
     let clickedDog = JSON.parse(localStorage.getItem('clickedDog'));
     console.log('clickedDog: ', clickedDog);
     setDogData(clickedDog);
-    setShowingView(INDIVIDUALDOG);
-  }
-
-  function navigateBack() {
-    setShowingView(LISTOFDOGS);
   }
 
   function removeLocalStorage() {
     localStorage.removeItem('dogs');
+    localStorage.removeItem('clickedDog');
   }
 
   useEffect(() => {
-    GetData(() => { setShowingView(LISTOFDOGS) });
+    GetData(() => setLoaded(true));
   }, []);
-
-  let content = null;
-  switch (showingView) {
-    case LISTOFDOGS:
-      content = <Registry logClickedDog={logClickedDog} />
-      break;
-    case INDIVIDUALDOG:
-      content = <SelectedDog dogData={dogData} navBack={navigateBack} />
-      break;
-    default:
-      content = <div>Loading...</div>
-  }
 
   return (
     <div className="App">
@@ -54,10 +39,24 @@ function App() {
         <button onClick={logLocalStorage}>What's in Local Storage?</button>
         <button onClick={logClickedDog}>Any clicked dog?</button>
         <button onClick={removeLocalStorage}>Delete local storage</button>
-
+        
       </header>
       <main>
-        {content}
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <div>
+                <Link to="listofdogs">List of dogs</Link>
+              </div>
+            </Route>
+            <Route exact path="/listofdogs">
+              <Registry logClickedDog={logClickedDog} dataLoaded={loaded} />
+            </Route>
+            <Route path="/individualdog">
+              <SelectedDog dogData={dogData} />
+            </Route>
+          </Switch>
+        </Router>
       </main>
     </div>
   );

@@ -1,11 +1,7 @@
+import { Link } from 'react-router-dom';
 import './selectedDog.css';
 
-const selectedDog = ({ dogData, navBack }) => {
-  console.log('SelectedDog dogData: ', dogData);
-
-  function navigateBack() {
-    navBack();
-  }
+const selectedDog = ({ dogData }) => {
 
   if (!dogData) {
     console.log('no data through props - using data from local storage');
@@ -14,7 +10,7 @@ const selectedDog = ({ dogData, navBack }) => {
 
   return (
 
-    <div onClick={() => { navigateBack() }}>
+    <div>
       {dogData ? (
         <div className="selectedDog">
           <section className="dogSection">
@@ -50,6 +46,7 @@ const selectedDog = ({ dogData, navBack }) => {
       ) : (
         <div>
           <h6>There was an error loading your data - please try again</h6>
+          <Link to="/listofdogs"><h6>Go to list of dogs</h6></Link>
         </div>)}
     </div>
 
