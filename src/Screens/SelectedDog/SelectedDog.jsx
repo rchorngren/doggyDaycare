@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './selectedDog.css';
 
-const selectedDog = ({ dogData }) => {
+const SelectedDog = ({ dogData }) => {
 
   if (!dogData) {
     console.log('no data through props - using data from local storage');
@@ -19,10 +19,6 @@ const selectedDog = ({ dogData }) => {
               <p>Name: {dogData.name}</p>
               <p>Age: {dogData.age}</p>
             </div>
-
-            
-
-
 
           </section>
 
@@ -53,4 +49,4 @@ const selectedDog = ({ dogData }) => {
   )
 }
 
-export default selectedDog;
+export default SelectedDog;

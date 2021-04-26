@@ -1,46 +1,29 @@
 .dogEntry {
   display: flex;
-  /* justify-content: space-between; */
-  height: 20%;
-  /* width: auto; */
+  height: 10em;
   background-color: hotpink;
   margin: 1em;
   border-radius: 2em;
 }
 
-.dogInfo {
-  display: flex;
-  /* align-items: center; */
-  /* justify-items: center; */
+.dogImageSmall {
+  width: 10em;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  object-fit: cover;
 }
 
-.dogInfoText {
+.dogInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  /* margin-left: 1em; */
-  background-color: aqua;
-  
+  align-self: flex-end;  
 }
 
 .dogName {
-  /* align-self: center */
-  /* text-align: center; */
-}
-
-.dogPresent {
-  /* margin-left: 1em; */
-  /* align-self: center; */
-  /* margin-right: 3em; */
-}
-
-.dogImageSmall {
-  width: 10em;
-  height: 100%;
-  border-top-left-radius: 2em;
-  border-bottom-left-radius: 2em;
-  object-fit: cover;
+  width: 5em;
+  text-align: center;
 }
 
 .dogPresentIndicator {

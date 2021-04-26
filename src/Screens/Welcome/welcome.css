@@ -1,0 +1,10 @@
+.Welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 70vh;
+  margin: 2em;
+  /* background-color: aqua; */
+}
+

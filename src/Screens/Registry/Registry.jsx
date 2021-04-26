@@ -1,34 +1,19 @@
-import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './registry.css';
-// import GetData from '../../Api/GetData';
 import DogpawPresent from '../../Resources/dog-paw.svg';
 import DogpawAbsent from '../../Resources/dog-paw-absent.svg';
 
-const Registry = ({ logClickedDog, dataLoaded }) => {
-  const [reallyLoaded, setReallyLoaded] = useState(false);
-
-  // if(!dataLoaded) {
-  //   GetData(() => {setLoaded(true)});
-  // }
-
+const Registry = ({ saveSelected, dataLoaded }) => {
   let localDataUnparsed = localStorage.getItem('dogs');
   let localData = JSON.parse(localDataUnparsed);
   const history = useHistory();
 
   function clickedDog(data) {
     localStorage.setItem('clickedDog', JSON.stringify(data));
-    logClickedDog();
+    saveSelected();
     history.push("/individualdog");
   }
-
-  // useEffect(() => {
-  //   if(localData) {
-  //     console.log('reallyLoaded')
-  //     setReallyLoaded(true);
-  //   }
-  // }, [dataLoaded]);
 
   return (
 
@@ -38,13 +23,12 @@ const Registry = ({ logClickedDog, dataLoaded }) => {
           return (
             <div className="dogEntry" onClick={() => { clickedDog(data) }} key={key}>
 
-              <div className="dogInfo">
                 <img className="dogImageSmall" src={data.img} alt="" />
-                <div className="dogInfoText">
+                <div className="dogInfo">
+                  
                   <h3 className="dogName">{data.name}</h3>
                   <img className="dogPresentIndicator" src={(data.present ? (DogpawPresent) : (DogpawAbsent))} alt="" />
                 </div>
-              </div>
 
             </div>
           )
