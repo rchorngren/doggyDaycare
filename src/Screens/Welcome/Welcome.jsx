@@ -16,9 +16,8 @@ const Welcome = () => {
         <p>Would you like to view all dogs currently registered with us?</p>
       </div>
 
-      {/* <Link to="listofdogs"> */}
-        <div className="divButton" onClick={navigateToRegistry}>Yes please!</div>
-        {/* </Link> */}
+      <div className="divButton" onClick={navigateToRegistry}>Yes please!</div>
+      
     </section>
   )
 }
