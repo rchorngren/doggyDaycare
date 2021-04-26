@@ -1,8 +1,6 @@
-/* .App {
-  text-align: center;
-} */
-
 .App-header {
+  position: sticky;
+  top: 0;
   background-color: #282c34;
   display: flex;
   flex-direction: column;
@@ -13,5 +11,18 @@
 }
 
 .Dev-tools {
-  display: block;
+  display: none;
+}
+
+.divButton {
+  display: flex;
+  background-color: white;
+  width: 7em;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  background-color: #8a9ab9;
+  box-shadow: #8a9ab9 3px 3px 5px;
 }

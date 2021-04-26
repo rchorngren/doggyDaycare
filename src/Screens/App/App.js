@@ -1,63 +1,64 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import GetData from '../../Api/GetData';
+import Welcome from '../Welcome/Welcome';
 import Registry from '../Registry/Registry';
 import SelectedDog from '../SelectedDog/SelectedDog';
 import './App.css';
 
 function App() {
-  const HOME = 'homeScreen', LISTOFDOGS = 'listOfDogs', INDIVIDUALDOG = 'individualDog';
-
-  const [showingView, setShowingView] = useState(HOME);
   const [dogData, setDogData] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+
+  const apiAddress = 'https://api.jsonbin.io/b/607ef0d824143e5df08a0676';
 
   function logLocalStorage() {
     let localDogs = localStorage.getItem('dogs');
     console.log('localDogs: ', JSON.parse(localDogs));
   }
 
-  function logClickedDog() {
+  function saveSelected() {
     let clickedDog = JSON.parse(localStorage.getItem('clickedDog'));
-    console.log('clickedDog: ', clickedDog);
     setDogData(clickedDog);
-    setShowingView(INDIVIDUALDOG);
-  }
-
-  function navigateBack() {
-    setShowingView(LISTOFDOGS);
   }
 
   function removeLocalStorage() {
     localStorage.removeItem('dogs');
+    localStorage.removeItem('clickedDog');
   }
 
   useEffect(() => {
-    GetData(() => { setShowingView(LISTOFDOGS) });
+    GetData(apiAddress, () => setLoaded(true));
   }, []);
-
-  let content = null;
-  switch (showingView) {
-    case LISTOFDOGS:
-      content = <Registry logClickedDog={logClickedDog} />
-      break;
-    case INDIVIDUALDOG:
-      content = <SelectedDog dogData={dogData} navBack={navigateBack} />
-      break;
-    default:
-      content = <div>Loading...</div>
-  }
 
   return (
     <div className="App">
 
-      <header className="App-header Dev-tools">
-        <button onClick={logLocalStorage}>What's in Local Storage?</button>
-        <button onClick={logClickedDog}>Any clicked dog?</button>
-        <button onClick={removeLocalStorage}>Delete local storage</button>
+      <header className="App-header">
+        <h1>Doggy Daycare</h1>
+        <div className="Dev-tools">
+          <button onClick={logLocalStorage}>What's in Local Storage?</button>
+          <button onClick={saveSelected}>Any clicked dog?</button>
+          <button onClick={removeLocalStorage}>Delete local storage</button>
+        </div>
+
 
       </header>
       <main>
-        {content}
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Welcome />
+            </Route>
+            <Route path="/listofdogs">
+              <Registry saveSelected={saveSelected} dataLoaded={loaded} />
+            </Route>
+            <Route path="/individualdog">
+              <SelectedDog dogData={dogData} />
+            </Route>
+          </Switch>
+        </Router>
       </main>
     </div>
   );
