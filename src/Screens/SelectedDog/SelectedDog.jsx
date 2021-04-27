@@ -10,7 +10,7 @@ const SelectedDog = ({ dogData }) => {
 
   return (
 
-    <div>
+    <div className="selectedDogContent">
       {dogData ? (
         <div className="selectedDog">
           <section className="dogSection">
