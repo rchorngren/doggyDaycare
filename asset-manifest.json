@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/doggyDaycare/static/css/main.014bb9cb.chunk.css",
+    "main.js": "/doggyDaycare/static/js/main.4cb2b5c3.chunk.js",
+    "main.js.map": "/doggyDaycare/static/js/main.4cb2b5c3.chunk.js.map",
+    "runtime-main.js": "/doggyDaycare/static/js/runtime-main.29d4b8dd.js",
+    "runtime-main.js.map": "/doggyDaycare/static/js/runtime-main.29d4b8dd.js.map",
+    "static/js/2.59a336d0.chunk.js": "/doggyDaycare/static/js/2.59a336d0.chunk.js",
+    "static/js/2.59a336d0.chunk.js.map": "/doggyDaycare/static/js/2.59a336d0.chunk.js.map",
+    "static/js/3.73e0499c.chunk.js": "/doggyDaycare/static/js/3.73e0499c.chunk.js",
+    "static/js/3.73e0499c.chunk.js.map": "/doggyDaycare/static/js/3.73e0499c.chunk.js.map",
+    "index.html": "/doggyDaycare/index.html",
+    "static/css/main.014bb9cb.chunk.css.map": "/doggyDaycare/static/css/main.014bb9cb.chunk.css.map",
+    "static/js/2.59a336d0.chunk.js.LICENSE.txt": "/doggyDaycare/static/js/2.59a336d0.chunk.js.LICENSE.txt",
+    "static/media/dog-paw-absent.dc02ff77.svg": "/doggyDaycare/static/media/dog-paw-absent.dc02ff77.svg",
+    "static/media/dog-paw.d6a69466.svg": "/doggyDaycare/static/media/dog-paw.d6a69466.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.29d4b8dd.js",
+    "static/js/2.59a336d0.chunk.js",
+    "static/css/main.014bb9cb.chunk.css",
+    "static/js/main.4cb2b5c3.chunk.js"
+  ]
+}
