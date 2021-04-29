@@ -1,9 +1,11 @@
 import { useHistory } from 'react-router-dom';
+import DoggyButton from '../../Components/DoggyButton';
 import './welcome.css';
 
 const Welcome = () => {
 
   const history = useHistory();
+  const buttonText = "Yes, please";
 
   function navigateToRegistry() {
     history.push("listofdogs");
@@ -16,7 +18,7 @@ const Welcome = () => {
         <p>Would you like to view all dogs currently registered with us?</p>
       </div>
 
-      <div className="divButton" onClick={navigateToRegistry}>Yes please!</div>
+      <DoggyButton buttonText={buttonText} functionOnClick={navigateToRegistry} />
       
     </section>
   )
