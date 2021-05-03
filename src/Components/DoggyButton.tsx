@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
-const DoggyButton = ({buttonText, functionOnClick}) => {
+interface IProps {
+    buttonText: String;
+    functionOnClick: Function;
+}
+
+const DoggyButton = ({ buttonText, functionOnClick }: IProps) => {
 
     const [isClicked, setIsClicked] = useState(false);
 
@@ -18,10 +23,9 @@ const DoggyButton = ({buttonText, functionOnClick}) => {
             border: "1px solid black",
             justifyContent: "center",
             alignItems: "center",
-            textAlign: "center",
             background: "#8a9ab9",
             boxShadow: "#8a9ab9 3px 3px 5px"
-            
+
         },
         clickedButton: {
             display: "flex",
@@ -34,27 +38,34 @@ const DoggyButton = ({buttonText, functionOnClick}) => {
             border: "1px solid black",
             justifyContent: "center",
             alignItems: "center",
-            textAlign: "center",
             background: "#8a9ab9",
             boxShadow: "#8a9ab9 0px 0px 5px",
             transform: "translateY(2px)"
-            
+
         }
     }
 
+
     //The timeouts are used to create the visual effect of clicking a button
     //They do not affect any functionality
-    function activeFunctionWithDelay(functionOnClick) {
+    function activeFunctionWithDelay( functionToRunOnClick : Function ) {
         setTimeout(() => {
             setIsClicked(false);
         }, 100);
         setTimeout(() => {
-            functionOnClick();
+            functionToRunOnClick();
         }, 250);
     }
 
     return (
-        <div onClick={() => {setIsClicked(true); activeFunctionWithDelay(functionOnClick)}} style={isClicked ? style.clickedButton : style.button}>
+        <div onClick={() => {
+            setIsClicked(true);
+            activeFunctionWithDelay( functionOnClick )
+        }}
+            style={isClicked ?
+                style.clickedButton :
+                style.button
+            }>
             {customButtonText}
         </div>
     )

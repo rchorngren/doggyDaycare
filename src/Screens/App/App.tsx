@@ -13,23 +13,24 @@ function App() {
 
   const apiAddress = 'https://api.jsonbin.io/b/607ef0d824143e5df08a0676';
 
-  function logLocalStorage() {
-    let localDogs = localStorage.getItem('dogs');
+  function logsessionStorage() {
+    let localDogs = sessionStorage.getItem('dogs') || ""; //TODO - default list of dogs
     console.log('localDogs: ', JSON.parse(localDogs));
   }
 
   function saveSelected() {
-    let clickedDog = JSON.parse(localStorage.getItem('clickedDog'));
+    let sessionStorageClickedDog = sessionStorage.getItem('clickedDog') || ""; //TODO - default clicked dog
+    let clickedDog = JSON.parse(sessionStorageClickedDog);
     setDogData(clickedDog);
   }
 
-  function removeLocalStorage() {
-    localStorage.removeItem('dogs');
-    localStorage.removeItem('clickedDog');
+  function removesessionStorage() {
+    sessionStorage.removeItem('dogs');
+    sessionStorage.removeItem('clickedDog');
   }
 
   useEffect(() => {
-    GetData(apiAddress, () => setLoaded(true));
+    GetData( apiAddress, () => setLoaded(true));
   }, []);
 
   return (
@@ -38,9 +39,9 @@ function App() {
       <header className="App-header">
         <h1>Doggy Daycare</h1>
         <div className="Dev-tools">
-          <button onClick={logLocalStorage}>What's in Local Storage?</button>
+          <button onClick={logsessionStorage}>What's in Local Storage?</button>
           <button onClick={saveSelected}>Any clicked dog?</button>
-          <button onClick={removeLocalStorage}>Delete local storage</button>
+          <button onClick={removesessionStorage}>Delete local storage</button>
         </div>
 
 

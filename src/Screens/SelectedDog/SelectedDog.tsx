@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import './selectedDog.css';
 
-const SelectedDog = ({ dogData }) => {
+interface IProps {
+  dogData: any; //TODO: Declear the array properly (if possible?)
+}
+
+const SelectedDog = ({ dogData }: IProps) => {
 
   if (!dogData) {
     console.log('no data through props - using data from local storage');
-    dogData = JSON.parse(localStorage.getItem('clickedDog'));
+    dogData = JSON.parse(sessionStorage.getItem('clickedDog')!);
   }
 
   return (
